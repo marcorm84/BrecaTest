@@ -1,13 +1,9 @@
 import {API_URL} from './../constants';
 
-const CategoriesURL = API_URL + '/categories';
-const BrandsURL = API_URL + '/brands/';
-const FamiliesURL = API_URL + '/families/';
-const StoresURL = API_URL + '/products/';
-
 export async function getCategories() {
   try {
-    const response = await fetch(CategoriesURL);
+    const url = `${API_URL}/categories`;
+    const response = await fetch(url);
     const responseJson = await response.json();
     return responseJson;
   } catch (error) {
@@ -16,7 +12,8 @@ export async function getCategories() {
 }
 export async function getBrands(category) {
   try {
-    const response = await fetch(BrandsURL + category);
+    const url = `${API_URL}/brands/${category}`;
+    const response = await fetch(url);
     const responseJson = await response.json();
     return responseJson;
   } catch (error) {
@@ -26,7 +23,8 @@ export async function getBrands(category) {
 
 export async function getFamilies(brand, category) {
   try {
-    const response = await fetch(FamiliesURL + brand + '/'+ category);
+    const url = `${API_URL}/families/${brand}/${category}`;
+    const response = await fetch(url);
     const responseJson = await response.json();
     return responseJson;
   } catch (error) {
@@ -36,7 +34,8 @@ export async function getFamilies(brand, category) {
 
 export default async function getStores(category, brand, family) {
   try {
-    const response = await fetch(StoresURL + category + '/' + brand + '/' + family);
+    const url = `${API_URL}/products/${category}/${brand}/${family}`;
+    const response = await fetch(url);
     const responseJson = await response.json();
     return responseJson;
   } catch (error) {
